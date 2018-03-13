@@ -6,7 +6,6 @@
 package servletmvc.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.rmi.ServerException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
