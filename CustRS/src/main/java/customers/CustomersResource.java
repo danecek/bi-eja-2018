@@ -11,15 +11,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 
-
 @Path("customers")
 public class CustomersResource {
 
     @GET
-    @Produces(MediaType.TEXT_XML)
+    @Produces(MediaType.APPLICATION_XML)
     public List<Customer> getXml() {
         return Customers.inst.getAll();
     }
-
 
 }
