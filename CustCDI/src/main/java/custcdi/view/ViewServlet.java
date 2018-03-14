@@ -1,17 +1,16 @@
 package custcdi.view;
 
 import custcdi.business.Facade;
-import custcdi.model.Customer;
+import custcdi.model.Cust;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Optional;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.inject.Inject;
 
 @WebServlet({""})
 public class ViewServlet extends HttpServlet {
@@ -28,15 +27,8 @@ public class ViewServlet extends HttpServlet {
     }
 
     static String etag(String tag) {
-        return new StringBuilder("</").append(tag).append(">").toString();
-    }
-
-    static String closedtag(String tag, String... attrs) {
-        StringBuilder sb = new StringBuilder("<").append(tag);
-        for (int i = 0; i < attrs.length; i += 2) {
-            sb.append(" ").append(attrs[i]).append("=\"").append(attrs[i + 1]).append("\"");
-        }
-        return sb.append("/>").toString();
+        StringBuilder sb = new StringBuilder("</").append(tag);
+        return sb.append(">").toString();
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -51,42 +43,41 @@ public class ViewServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Data</h1>");
-            Optional<String> user = facade.user();
 
-            out.println("User: " + user.orElse("anonym"));
-            out.println(btag("hr"));
+            out.println("User: " + facade.user().orElse("anonymous"));
 
-            out.println(btag("table", "border", "1"));
-            for (Customer item : facade.all()) {
-                out.println(btag("tr"));
-                out.println(btag("td"));
-                out.println(item.getId());
-                out.println(etag("td"));
-                out.println(btag("td"));
-                out.println(item.getName());
-                out.println(etag("td"));
-                out.println(etag("tr"));
+            out.print(btag("table", "border", "1"));
+            for (Cust item : facade.allCusts()) {
+                out.print(btag("tr"));
+                out.print(btag("td"));
+                out.print(item.getId());
+                out.print(etag("td"));
+                out.print(btag("td"));
+                out.print(item.getName());
+                out.print(etag("td"));
+                out.print(etag("tr"));
             }
-            out.println(etag("table"));
+            out.print(etag("table"));
 
-            out.println(btag("hr"));
-
-            if (user.isPresent()) {
-                out.println("Add user");
-                out.println(btag("form", "action", "addItem.do", "method", "POST"));
-                out.println(closedtag("input", "type", "text", "name", "item"));
-                out.println(closedtag("input", "type", "Submit", "value", "Add"));
-                out.println(etag("form"));
+            if (facade.user().isPresent()) {
+                out.print(btag("form", "action", "addItem.do", "method", "POST"));
+                out.print(btag("input", "type", "text", "name", "name"));
+                out.print(etag("input"));
+                out.print(btag("input", "type", "Submit", "value", "Add"));
+                out.print(etag("input"));
+                out.print(etag("form"));
                 Object mess = request.getAttribute("error");
                 if (mess != null) {
                     out.print(mess);
                 }
             } else {
-                out.println("Login");
-                out.println(btag("form", "action", "login.do", "method", "POST"));
-                out.println(closedtag("input", "type", "text", "name", "user"));
-                out.println(closedtag("input", "type", "Submit", "value", "Login"));
-                out.println(etag("form"));
+                out.print("Login");
+                out.print(btag("form", "action", "login.do", "method", "POST"));
+                out.print(btag("input", "type", "text", "name", "user"));
+                out.print(etag("input"));
+                out.print(btag("input", "type", "Submit", "value", "Login"));
+                out.print(etag("input"));
+                out.print(etag("form"));
                 Object mess = request.getAttribute("error");
                 if (mess != null) {
                     out.print(mess);

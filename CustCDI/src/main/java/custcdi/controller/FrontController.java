@@ -5,7 +5,6 @@
  */
 package custcdi.controller;
 
-import custcdi.business.Facade;
 import java.io.IOException;
 import java.rmi.ServerException;
 import javax.inject.Inject;
@@ -16,12 +15,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 @WebServlet({"*.do"})
 public class FrontController extends HttpServlet {
-    
+
     @Inject
-    Facade facade;
+    @AddCustQ
+    CustAction addCust;
+    @Inject
+    @LoginQ
+    CustAction login;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -30,26 +32,12 @@ public class FrontController extends HttpServlet {
         String action = request.getServletPath();
         switch (action) {
             case "/addItem.do": {
-                String item = request.getParameter("item");
-                if (item.isEmpty()) {
-                    request.setAttribute("error", "Empty item");
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("");
-                    rd.forward(request, response);
-                    return;
-                }
-                facade.add(item);
+                addCust.execute();
                 break;
 
             }
             case "/login.do": {
-                String user = request.getParameter("user");
-                if (user.isEmpty()) {
-                    request.setAttribute("error", "Empty item");
-                    RequestDispatcher rd = getServletContext().getRequestDispatcher("");
-                    rd.forward(request, response);
-                    return;
-                }
-                facade.login(user);
+                login.execute();
                 break;
 
             }

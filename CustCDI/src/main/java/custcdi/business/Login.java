@@ -16,13 +16,16 @@ public class Login implements Serializable {
 
     public void login(String user) {
         this.user = user;
+
     }
 
     public void logout() {
-        user = null;
+        this.user = null;
+
     }
 
-    public Optional<String> user() {
+    Optional<String> user() {
         return Optional.ofNullable(user);
     }
+
 }

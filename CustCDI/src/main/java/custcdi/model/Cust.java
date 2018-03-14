@@ -5,22 +5,28 @@
  */
 package custcdi.model;
 
-public class Customer {
+public class Cust {
 
     private final int id;
     private final String name;
 
-    public Customer(int id, String name) {
+    public Cust(int id, String name) {
         this.id = id;
         this.name = name;
     }
 
+    /**
+     * @return the id
+     */
     public int getId() {
         return id;
     }
 
-
+    /**
+     * @return the name
+     */
     public String getName() {
         return name;
     }
+
 }

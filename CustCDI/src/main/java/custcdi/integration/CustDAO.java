@@ -3,21 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custcdi.business;
+package custcdi.integration;
 
 import custcdi.model.Cust;
 import java.util.List;
-import java.util.Optional;
 
-public interface Facade {
 
-    void addCust(String name);
+public interface CustDAO {
 
-    List<Cust> allCusts();
+    void add(String name);
 
-    public void login(String user);
-
-    public void logout();
-
-    public Optional<String> user();
+    List<Cust> all();
+    
 }

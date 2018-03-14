@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custcdi.persist;
+package custcdi.integration;
 
-import custcdi.model.Customer;
-import java.util.List;
+public class KeyGen {
 
+    private int counter = 1;
 
-public interface CustDAO {
+    public int newKey() {
+        return counter++;
+    }
 
-    List<Customer> all();
-
-    void createCust(String name);
-    
 }
