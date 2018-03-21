@@ -33,7 +33,7 @@
                 </dependency>
                 <dependency>
                     <groupId>org.wildfly.swarm</groupId>
-                    <artifactId>jsf</artifactId>
+                    <artifactId>cdi</artifactId>
                 </dependency>
             </dependencies>
             <build>
@@ -66,7 +66,7 @@
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>        
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
