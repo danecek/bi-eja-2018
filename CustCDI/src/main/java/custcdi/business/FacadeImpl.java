@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.validation.constraints.Size;
 
 @RequestScoped
 @FacadeLogger
@@ -37,7 +38,7 @@ public class FacadeImpl implements Facade {
     }
 
     @Override
-    public void login(String user) {
+    public void login(@Size(min = 3) String user) {
         login.login(user);
     }
 

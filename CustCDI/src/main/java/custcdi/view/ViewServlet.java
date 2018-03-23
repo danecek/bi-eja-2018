@@ -4,13 +4,14 @@ import custcdi.business.Facade;
 import custcdi.model.Cust;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Set;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.inject.Inject;
+import javax.validation.ConstraintViolation;
 
 @WebServlet({""})
 public class ViewServlet extends HttpServlet {
@@ -59,6 +60,13 @@ public class ViewServlet extends HttpServlet {
             }
             out.print(etag("table"));
 
+            Set<ConstraintViolation> cvs = (Set<ConstraintViolation>) request.getAttribute("constrantViolations");
+            if (cvs != null) {
+                cvs.forEach((cv) -> {
+                    out.print(cv.getMessage());
+                });
+            }
+
             if (facade.user().isPresent()) {
                 out.print(btag("form", "action", "addItem.do", "method", "POST"));
                 out.print(btag("input", "type", "text", "name", "name"));
@@ -66,10 +74,6 @@ public class ViewServlet extends HttpServlet {
                 out.print(btag("input", "type", "Submit", "value", "Add"));
                 out.print(etag("input"));
                 out.print(etag("form"));
-                Object mess = request.getAttribute("error");
-                if (mess != null) {
-                    out.print(mess);
-                }
             } else {
                 out.print("Login");
                 out.print(btag("form", "action", "login.do", "method", "POST"));
@@ -78,10 +82,6 @@ public class ViewServlet extends HttpServlet {
                 out.print(btag("input", "type", "Submit", "value", "Login"));
                 out.print(etag("input"));
                 out.print(etag("form"));
-                Object mess = request.getAttribute("error");
-                if (mess != null) {
-                    out.print(mess);
-                }
             }
 
             out.println("</body>");

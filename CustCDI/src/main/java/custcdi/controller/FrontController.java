@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolationException;
 
 @WebServlet({"*.do"})
 public class FrontController extends HttpServlet {
@@ -28,30 +29,31 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         String action = request.getServletPath();
-        switch (action) {
-            case "/addItem.do": {
-                addCust.execute();
-                break;
-
+        try {
+            switch (action) {
+                case "/addItem.do": {
+                    addCust.execute();
+                    break;
+                }
+                case "/login.do": {
+                    login.execute();
+                    break;
+                }
+                default:
+                    throw new ServerException("invalid action");
             }
-            case "/login.do": {
-                login.execute();
-                break;
-
-            }
-            default:
-                throw new ServerException("imvalid action");
-
+            response.sendRedirect(""); // OK
+        } catch (ConstraintViolationException e) { // fail of bean validation
+            request.setAttribute("constrantViolations", e.getConstraintViolations());
+            RequestDispatcher rd = request.getRequestDispatcher("");
+            rd.forward(request, response);
         }
-        response.sendRedirect("");
-
     }
 
     @Override
     public String getServletInfo() {
         return "Front contoller";
-    }// </editor-fold>
+    }
 
 }
