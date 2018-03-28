@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.view;
+package custcdi.view;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;

@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.controller;
+package custcdi.business;
 
 import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.ElementType.FIELD;
-import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
+import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-import javax.inject.Qualifier;
+import javax.interceptor.InterceptorBinding;
 
 /**
  *
  * @author danecek
  */
-@Qualifier
+@Inherited
+@InterceptorBinding
 @Retention(RUNTIME)
-@Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface LoginQ {
+@Target({METHOD, TYPE})
+public @interface FacadeLogger {
 }

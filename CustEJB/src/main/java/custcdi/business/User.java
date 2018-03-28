@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.business;
+package custcdi.business;
 
 import java.io.Serializable;
 import java.util.Optional;
@@ -26,7 +26,7 @@ public class User implements Serializable {
 
     }
 
-    public Optional<String> getUser() {
+    public Optional<String> user() {
         return Optional.ofNullable(user);
     }
 

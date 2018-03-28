@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.integration;
+package custcdi.integration;
 
-import custejb.model.Cust;
+import custcdi.model.Cust;
 import java.util.List;
 
 

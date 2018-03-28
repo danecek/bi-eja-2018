@@ -9,8 +9,9 @@
         <title>Customers</title>
     </h:head>
     <h:body>
-        <ui:composition template="CustEJBTemplate.xhtml">
-            <ui:define name="content" >                
+        <ui:composition template="CustTempl.xhtml">
+            <ui:define name="content">              
+
                 <p:dataTable value="#{index.custs}" var="cust" paginator="true" >            
                     <p:column>
                         <f:facet name="header">Id</f:facet>
@@ -20,16 +21,18 @@
                         <f:facet name="header">Name</f:facet>
                             #{cust.name}
                     </p:column>
-                    <p:column rendered="#{index.logged}">
+                    <p:column>
                         <f:facet name="header">Delete</f:facet>
-                        <h:link value="Delete" outcome="delCust">
+                        <h:link value="Delete" outcome="delCust" rendered="#{index.logged}">
                             <f:param name="id" value="#{cust.id}"/>
                         </h:link>
                     </p:column>
-                </p:dataTable>
 
+                </p:dataTable>
             </ui:define>
         </ui:composition>
+        <h:link value="Add Customer" outcome="addCust"/>
+
     </h:body>
 </html>
 

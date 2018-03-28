@@ -97,4 +97,5 @@
                            
         </plugins>
     </build>
+    <name>CustEJB3</name>
 </project>

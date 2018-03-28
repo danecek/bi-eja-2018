@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.view;
+package custcdi.view;
 
-import custejb.business.Facade;
-import custejb.model.Cust;
+import custcdi.business.Facade;
+import custcdi.model.Cust;
 import java.util.List;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
-@Model
+@Model //  @ Named @RequestScoped
 public class Index {
 
     @Inject
@@ -21,8 +21,17 @@ public class Index {
         return facade.allCusts();
     }
 
+    public String getUser() {
+        return facade.user().orElse("anonymous");
+    }
+
+    public String logout() {
+        facade.logout();
+        return "index?faces-redirect=true";
+    }
+    
     public boolean isLogged() {
-        return facade.loggedUser().isPresent();
+       return facade.user().isPresent();
     }
 
 }

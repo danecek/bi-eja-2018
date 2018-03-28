@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.controller;
+package custcdi.controller;
 
-import custejb.business.Facade;
+import custcdi.business.Facade;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 

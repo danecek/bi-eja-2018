@@ -3,10 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.controller;
+package custcdi.integration;
 
-public interface CustAction {
+public class KeyGen {
 
-    public void execute();
+    private int counter = 1;
+
+    public int newKey() {
+        return counter++;
+    }
 
 }

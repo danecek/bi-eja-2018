@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.view;
+package custcdi.view;
 
-import custejb.business.Facade;
-import custejb.model.Cust;
+import custcdi.business.Facade;
+import custcdi.model.Cust;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 

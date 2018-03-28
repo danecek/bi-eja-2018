@@ -3,27 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.integration;
+package custcdi.integration;
 
-import custejb.model.Cust;
+import custcdi.model.Cust;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
-import javax.ejb.Lock;
-import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-@Singleton
 @ApplicationScoped
-public class CustsDAOImpl implements CustDAO {
+@Singleton
+public class CustsDAOMock implements CustDAO {
 
     @Inject
     private KeyGen kg;
 
+//    @Inject
+//    public CustsDAOMock(KeyGen kg) {
+//        this.kg = kg;
+//    }
     private Map<Integer, Cust> data;
 
     @Override
@@ -33,7 +35,6 @@ public class CustsDAOImpl implements CustDAO {
     }
 
     @Override
-    @Lock(LockType.READ)
     public List<Cust> all() {
         return new ArrayList<>(data.values());
     }
@@ -44,7 +45,6 @@ public class CustsDAOImpl implements CustDAO {
     }
 
     @Override
-    @Lock(LockType.READ)
     public Cust find(int id) {
         return data.get(id);
     }

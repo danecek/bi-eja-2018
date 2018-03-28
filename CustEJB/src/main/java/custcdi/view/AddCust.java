@@ -3,12 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custejb.view;
+package custcdi.view;
 
-import custejb.business.Facade;
+import custcdi.business.Facade;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
@@ -18,15 +17,20 @@ public class AddCust {
     @Inject
     private Facade facade;
 
-    @NotNull
-    @Pattern(regexp = "[a-zA-Z]+")
-    @Size(min=4)
+    @Pattern(regexp = "[a-zA-Z]+", message = "{onlyletters}")
+    @Size(min = 3, message = "{tooshort}")
     private String name;
 
+    /**
+     * @return the name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * @param name the name to set
+     */
     public void setName(String name) {
         this.name = name;
     }
