@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition>
+            <h:form>
+                <p:tabMenu activeIndex="#{param.i}">
+                    <p:menuitem value="Login" outcome="login" rendered="#{not login.logged}"/>
+
+                    <p:menuitem value="Logout" action="#{login.logout()}" 
+                                rendered="#{login.logged}"/>  
+
+                    <p:menuitem value="Add Cstomer" outcome="addCust" rendered="#{login.logged}"/>
+                </p:tabMenu>
+            </h:form>
+        </ui:composition>
+
+    </h:body>
+</html>
+
