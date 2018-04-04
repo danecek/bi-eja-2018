@@ -26,7 +26,7 @@ public class Order {
     private long id;
 
     private int price;
-    
+
     @ManyToOne(optional = false)
     private Cust cust;
 
@@ -55,8 +55,5 @@ public class Order {
     public Cust getCust() {
         return cust;
     }
-    
-    
-    
 
 }
