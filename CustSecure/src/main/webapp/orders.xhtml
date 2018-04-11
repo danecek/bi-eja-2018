@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Customers</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="CustTempl.xhtml">
+            <ui:define name="content">              
+
+                <p:dataTable value="#{orders.orders}" var="order" paginator="true" >            
+                    <p:column>
+                        <f:facet name="header">Id</f:facet>
+                            #{order.id}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Price</f:facet>
+                            #{order.price}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Customer</f:facet>
+                            #{order.cust.name}
+                    </p:column>
+                    <!--p:column>
+                        <f:facet name="header">Delete</f:facet>
+                        <h:link value="Delete" outcome="delCust" rendered="#{index.logged}">
+                            <f:param name="id" value="#{order.id}"/>
+                        </h:link>
+                    </p:column-->
+
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+        <h:link value="Add Customer" outcome="addCust"/>
+
+    </h:body>
+</html>
+
