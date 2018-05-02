@@ -13,12 +13,15 @@ and open the template in the editor.
     </head>
     <body>
         <div class="w3-container w3-margin">
+            <h2>Add customer</h2>
+            
             <form action="#" th:action="@{/addCustomer}"
                   th:object="${custForm}" method="post">
-                <input type="text" th:field="*{name}"  />
+                <label for="name">Name:</label>
+                <input id="name" type="text" th:field="*{name}"  />
                 <p th:if="${#fields.hasErrors('name')}" 
 
-                  th:errors="*{name}">Name Errors</p>>
+                  th:errors="*{name}">Name Errors</p>
                 <input type="submit" value="Submit"> 
             </form>
 
