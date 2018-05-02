@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custsspringmvc;
+package custsspringmvcjdbc;
 
-import custsspringmvc.business.FacadeImpl;
-import custsspringmvc.integration.CustsDAOImpl;
+import custsspringmvcjdbc.business.FacadeImpl;
+import custsspringmvcjdbc.integration.CustsDAOImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

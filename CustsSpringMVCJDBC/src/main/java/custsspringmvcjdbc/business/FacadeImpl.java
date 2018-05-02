@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custsspringmvc.business;
+package custsspringmvcjdbc.business;
 
-import custsspringmvc.integration.CustsDAO;
-import custsspringmvc.model.Cust;
+import custsspringmvcjdbc.integration.CustsDAO;
+import custsspringmvcjdbc.model.Cust;
 import java.util.List;
 
 public class FacadeImpl implements Facade {

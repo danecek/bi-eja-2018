@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package custsspringmvc.business;
+package custsspringmvcjdbc.business;
 
 
-import custsspringmvc.model.Cust;
+import custsspringmvcjdbc.model.Cust;
 import java.util.List;
 import javax.validation.constraints.Pattern;
 
