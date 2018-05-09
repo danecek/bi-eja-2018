@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <body>
+        <div class="w3-container w3-margin">
+            <h2>Customers</h2>
+            <div class="w3-bar w3-black">
+                <a href ="#" th:href="@{index}"       class="w3-bar-item w3-button">Home</a>
+                <a href ="#" th:href="@{addCustomer}" class="w3-bar-item w3-button">Add Customer</a>
+            </div>
+            <table class="w3-table-all">
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Version
+                    </th>
+                </tr>
+                <tr th:each="c:${customers}">
+                    <td th:text="${c.id}">
+                        333
+                    </td>
+                    <td th:text="${c.name}">
+                        Tom
+                    </td>
+                    <td th:text="${c.version}">
+                        Tom
+                    </td>
+                </tr>
+
+
+
+            </table>
+        </div>
+    </body>
+</html>
